@@ -213,6 +213,39 @@ Rscript 02_lab_analysis.R \
 - `full`: Run complete pipeline
 - `help`: Show help message
 
+## 📁 Prepared Data Structure
+
+After running the data preparation step, your `./prepared_data/` directory will contain the following files:
+
+### Minimal Setup (Required Files Only)
+```
+./prepared_data/
+├── cohort.rds          # ✅ Required - Processed cohort data
+└── lab_subset.rds      # ✅ Required - Lab results subset
+```
+
+### Complete Setup (With Optional Files)
+```
+./prepared_data/
+├── cohort.rds          # ✅ Required - Processed cohort data
+├── lab_subset.rds      # ✅ Required - Lab results subset
+└── cancer_subset.rds   # ⚪ Optional - Cancer diagnosis subset
+```
+
+### Additional Files (Created by Data Preparation)
+```
+./prepared_data/
+├── cohort.rds                    # ✅ Required
+├── lab_subset.rds                # ✅ Required
+├── cancer_subset.rds             # ⚪ Optional
+├── lab_results.rds               # 📦 Full lab results (backup)
+├── cancer_diag.rds               # 📦 Full cancer diagnosis (backup)
+├── data_preparation_summary.csv  # 📊 Processing statistics
+└── data_preparation_summary.txt  # 📄 Text summary report
+```
+
+**Note**: The lab analysis script only requires `cohort.rds` and `lab_subset.rds`. The cancer data and additional files are optional.
+
 ## Output Files
 
 ### Data Preparation Outputs

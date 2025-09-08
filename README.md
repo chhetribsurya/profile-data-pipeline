@@ -452,25 +452,11 @@ git push origin feature/your-feature-name
 
 ### Reporting Issues
 
-Please use our [Issue Tracker](https://github.com/your-username/clinical-lab-analysis-pipeline/issues) to report bugs or request features.
+Please use our [Issue Tracker](https://github.com/chhetribsurya/profile-data-pipeline/issues) to report bugs or request features.
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Support
-
-For questions and support:
-
-- **Documentation**: Check this README and inline code comments
-- **Issues**: Use GitHub Issues for bug reports and feature requests
-- **Email**: [your-email@domain.com]
-
-## 🙏 Acknowledgments
-
-- Dana-Farber Cancer Institute for providing the clinical data framework
-- R community for excellent data processing packages
-- Contributors and users who provide feedback and improvements
 
 ## 📈 Version History
 

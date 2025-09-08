@@ -5,7 +5,7 @@ This file lists all contributors to the Clinical Lab Analysis Pipeline project.
 ## Core Contributors
 
 ### Lead Developer
-- **Your Name** - *Lead Developer* - [@your-username](https://github.com/your-username)
+- **Your Name** - *Lead Developer* - (https://github.com/chhetribsurya)
   - Initial project design and implementation
   - Core pipeline development
   - Documentation and testing

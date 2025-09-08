@@ -36,7 +36,7 @@ We welcome feature suggestions! Please:
 1. **Fork the repository**
 2. **Clone your fork**:
    ```bash
-   git clone https://github.com/your-username/clinical-lab-analysis-pipeline.git
+   git clone https://github.com/chhetribsurya/profile-data-pipeline.git
    cd clinical-lab-analysis-pipeline
    ```
 
@@ -260,13 +260,13 @@ We use [Semantic Versioning](https://semver.org/):
 - [ ] Release notes prepared
 - [ ] Tag created
 
-## 📞 Getting Help
+## Getting Help
 
 ### Community Support
 
 - **GitHub Issues**: For bugs and feature requests
 - **Discussions**: For general questions and discussions
-- **Email**: [your-email@domain.com] for direct contact
+- **Email**: chhetribsurya@gmail.com for direct contact
 
 ### Development Support
 
@@ -274,11 +274,11 @@ We use [Semantic Versioning](https://semver.org/):
 - **Mentoring**: Available for new contributors
 - **Documentation**: Comprehensive guides available
 
-## 📄 License
+## License
 
 By contributing to this project, you agree that your contributions will be licensed under the same license as the project (MIT License).
 
-## 🙏 Recognition
+## Recognition
 
 Contributors will be recognized in:
 

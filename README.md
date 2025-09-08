@@ -213,7 +213,7 @@ Rscript 02_lab_analysis.R \
 - `full`: Run complete pipeline
 - `help`: Show help message
 
-## 📊 Output Files
+## Output Files
 
 ### Data Preparation Outputs
 

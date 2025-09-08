@@ -128,7 +128,7 @@ print_progress <- function(current, total, item_name = "items") {
 }
 
 # Function to find nearest lab results for each patient and test type
-find_nearest_lab_results <- function(patient_mrn, reference_date, test_type = NULL, max_date_diff = 365) {
+find_nearest_lab_results <- function(patient_mrn, reference_date, lab_subset_cohort, test_type = NULL, max_date_diff = 365) {
   # Get all lab results for this patient
   patient_labs <- lab_subset_cohort[DFCI_MRN == patient_mrn]
   
@@ -285,7 +285,7 @@ perform_lab_analysis <- function(args, n_patients) {
     
     # Find nearest lab results for each test type
     patient_results <- rbindlist(lapply(unique_test_types, function(test_type) {
-      find_nearest_lab_results(patient_mrn, reference_date, test_type, args$max_date_diff)
+      find_nearest_lab_results(patient_mrn, reference_date, lab_subset_cohort, test_type, args$max_date_diff)
     }))
     
     # Add to result matrices

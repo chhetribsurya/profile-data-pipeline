@@ -2,7 +2,7 @@
 
 A R-based pipeline for processing and analyzing clinical data. This pipeline processes cohort data, laboratory results, and cancer diagnosis information to create wide-format matrices for downstream analysis.
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 # Clone the repository
@@ -19,7 +19,7 @@ chmod +x run_analysis.sh
 ./run_analysis.sh full --input_dir /path/to/your/data --n_patients all
 ```
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -35,7 +35,7 @@ chmod +x run_analysis.sh
 - [Contributing](#contributing)
 - [License](#license)
 
-## 🔍 Overview
+## Overview
 
 This pipeline is designed to process clinical data from DFCI's electronic health records system. It takes raw CSV files containing cohort information, laboratory results, and cancer diagnoses, and creates structured datasets suitable for research analysis.
 
@@ -49,14 +49,14 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 
 ## ✨ Features
 
-- 🏥 **Clinical Data Processing**: Handles cohort, lab results, and cancer diagnosis data
-- 📊 **Wide Format Matrices**: Creates patient × test type matrices for analysis
-- 📅 **Intelligent Date Matching**: Finds nearest lab results within configurable time windows
-- 🔧 **Flexible Configuration**: Command-line options for all major parameters
-- 📈 **Progress Tracking**: Real-time progress updates during processing
-- 📋 **Comprehensive Reporting**: Detailed summaries and statistics
-- 🚀 **Easy-to-Use Wrapper**: Single script to run complete pipeline
-- 💾 **Optimized Storage**: RDS format for fast loading and small file sizes
+- **Clinical Data Processing**: Handles cohort, lab results, and cancer diagnosis data
+- **Wide Format Matrices**: Creates patient × test type matrices for analysis
+- **Intelligent Date Matching**: Finds nearest lab results within configurable time windows
+- **Flexible Configuration**: Command-line options for all major parameters
+- **Progress Tracking**: Real-time progress updates during processing
+- **Comprehensive Reporting**: Detailed summaries and statistics
+- **Easy-to-Use Wrapper**: Single script to run complete pipeline
+- **Optimized Storage**: RDS format for fast loading and small file sizes
 
 ## 📦 Requirements
 
@@ -79,7 +79,7 @@ install.packages("data.table")
 install.packages("argparse")
 ```
 
-## 🛠️ Installation
+## Installation
 
 ### Method 1: Clone Repository
 
@@ -95,7 +95,7 @@ chmod +x run_analysis.sh
 2. Extract to your desired location
 3. Make the wrapper script executable: `chmod +x run_analysis.sh`
 
-## 📁 Data Requirements
+## Data Requirements
 
 The pipeline expects three main input files in CSV format:
 
@@ -120,7 +120,7 @@ The pipeline expects three main input files in CSV format:
 - **Encoding**: UTF-8 recommended
 - **Missing Values**: Empty cells or NA values are handled appropriately
 
-## 🚀 Usage
+## Usage
 
 ### Quick Start Commands
 
@@ -167,7 +167,7 @@ Rscript 02_lab_analysis.R \
   --output_dir ./results
 ```
 
-## 🔧 Pipeline Components
+## Pipeline Components
 
 ### 1. Data Preparation Script (`01_data_preparation.R`)
 
@@ -454,11 +454,11 @@ git push origin feature/your-feature-name
 
 Please use our [Issue Tracker](https://github.com/chhetribsurya/profile-data-pipeline/issues) to report bugs or request features.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📈 Version History
+## Version History
 
 - **v1.0.0**: Initial release with basic pipeline functionality
 - **v1.1.0**: Added wrapper script and improved error handling

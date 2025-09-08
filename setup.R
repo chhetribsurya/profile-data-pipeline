@@ -85,9 +85,9 @@ args <- create_parser()$parse_args()
 # =============================================================================
 
 print_header <- function(message) {
-  cat("=" %R% 60, "\n")
+  cat(paste(rep("=", 60), collapse = ""), "\n")
   cat(message, "\n")
-  cat("=" %R% 60, "\n")
+  cat(paste(rep("=", 60), collapse = ""), "\n")
 }
 
 print_success <- function(message) {

@@ -172,9 +172,9 @@ find_nearest_lab_results <- function(patient_mrn, reference_date, test_type = NU
 perform_lab_analysis <- function(args, n_patients) {
   start_time <- Sys.time()
   
-  cat("=" %R% 80, "\n")
+  cat(paste(rep("=", 80), collapse = ""), "\n")
   cat("LAB ANALYSIS SCRIPT\n")
-  cat("=" %R% 80, "\n")
+  cat(paste(rep("=", 80), collapse = ""), "\n")
   cat("Start time:", format(start_time), "\n")
   cat("Input directory:", args$input_dir, "\n")
   cat("Output directory:", args$output_dir, "\n")
@@ -473,9 +473,9 @@ perform_lab_analysis <- function(args, n_patients) {
   end_time <- Sys.time()
   processing_time <- round(as.numeric(end_time - start_time, units = "mins"), 2)
   
-  cat("\n", "=" %R% 80, "\n")
+  cat("\n", paste(rep("=", 80), collapse = ""), "\n")
   cat("LAB ANALYSIS COMPLETED SUCCESSFULLY\n")
-  cat("=" %R% 80, "\n")
+  cat(paste(rep("=", 80), collapse = ""), "\n")
   cat("End time:", format(end_time), "\n")
   cat("Total processing time:", processing_time, "minutes\n")
   cat("Output directory:", args$output_dir, "\n")

@@ -11,6 +11,8 @@ cohort <-fread(file.path(file_dir, "cohortmrn_merge.data.csv"), sep=",")
 cohort_idmrns <- unique(cohort$DFCI_MRN)
 total_cohort <- length(cohort_idmrns)
 
+saveRDS(cohort, file.path(save_dir, "cohort.rds"))
+
 # Read and subset lab results file
 file_dir <- "/data/gusev/PROFILE/CLINICAL/OncDRS/ALL_2025_03/"
 lab_results <- fread(file.path(file_dir, "OUTPT_LAB_RESULTS_LABS.csv"), sep=",")

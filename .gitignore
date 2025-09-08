@@ -1,22 +1,317 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
+# Clinical Lab Analysis Pipeline - Git Ignore File
+# This file specifies which files and directories should be ignored by Git
+
+# =============================================================================
+# R SPECIFIC
+# =============================================================================
+
+# R History files
+.Rhistory
+.Rapp.history
+
+# R Data files
+*.RData
+*.Rdata
+*.rda
+*.rds
+
+# R User files
+.Ruserdata
+
+# RStudio files
+.Rproj.user/
+.Rproj.user
+*.Rproj
+
+# R Session files
+.Rsession
+
+# R Environment files
+.Renviron
+.Renviron.local
+
+# R Package files
+*.tar.gz
+*.tar
+*.zip
+
+# R Check files
+.Rcheck/
+
+# R CMD check files
+*.Rcheck/
+
+# R Package documentation
+man/*.Rd
+vignettes/*.html
+vignettes/*.pdf
+
+# =============================================================================
+# DATA FILES
+# =============================================================================
+
+# Input data files (CSV)
+*.csv
+!example_data/*.csv
+
+# Output data files
+prepared_data/
+lab_analysis_results/
+output/
+results/
+
+# RDS files
+*.rds
+!example_data/*.rds
+
+# Large data files
+*.xlsx
+*.xls
+*.parquet
+*.feather
+
+# =============================================================================
+# LOGS AND TEMPORARY FILES
+# =============================================================================
+
+# Log files
+*.log
+logs/
+log/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# =============================================================================
+# SYSTEM FILES
+# =============================================================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# IDE AND EDITOR FILES
+# =============================================================================
+
+# VSCode
 .vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-file
-*.flf
-#Test results file
-TestResults.xml
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# =============================================================================
+# DOCKER AND CONTAINER FILES
+# =============================================================================
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# =============================================================================
+# PYTHON (if using Python components)
+# =============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# =============================================================================
+# JULIA (if using Julia components)
+# =============================================================================
+
+# Julia
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+
+# =============================================================================
+# RUST (if using Rust components)
+# =============================================================================
+
+# Rust
+target/
+Cargo.lock
+
+# =============================================================================
+# GO (if using Go components)
+# =============================================================================
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# =============================================================================
+# NODE.JS (if using Node.js components)
+# =============================================================================
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# =============================================================================
+# CLOUD AND DEPLOYMENT
+# =============================================================================
+
+# AWS
+.aws/
+
+# Google Cloud
+.gcloud/
+
+# Azure
+.azure/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# =============================================================================
+# SECURITY AND SENSITIVE FILES
+# =============================================================================
+
+# API keys and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+secrets/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# =============================================================================
+# DOCUMENTATION BUILD
+# =============================================================================
+
+# Documentation build files
+docs/_build/
+site/
+_site/
+
+# =============================================================================
+# TESTING
+# =============================================================================
+
+# Test outputs
+test_output/
+test_results/
+coverage/
+
+# =============================================================================
+# CUSTOM IGNORE PATTERNS
+# =============================================================================
+
+# Add your custom ignore patterns here
+# Example:
+# custom_pattern/
+# *.custom_extension

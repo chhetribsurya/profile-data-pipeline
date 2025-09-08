@@ -43,8 +43,8 @@ This guide covers different deployment options for the Clinical Lab Analysis Pip
 
 #### 1. Clone Repository
 ```bash
-git clone https://github.com/your-username/clinical-lab-analysis-pipeline.git
-cd clinical-lab-analysis-pipeline
+git clone https://github.com/chhetribsurya/profile-data-pipeline.git
+cd profile-data-pipeline
 ```
 
 #### 2. Install Dependencies

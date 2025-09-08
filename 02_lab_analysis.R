@@ -60,9 +60,9 @@ EXAMPLES:
   Rscript 02_lab_analysis.R --help
 
 INPUT FILES (from data preparation script):
-  - cohort.rds: Processed cohort data
-  - lab_subset.rds: Lab results subset
-  - cancer_subset.rds: Cancer diagnosis subset
+  - cohort.rds: Processed cohort data (required)
+  - lab_subset.rds: Lab results subset (required)
+  - cancer_subset.rds: Cancer diagnosis subset (optional)
 
 OUTPUT FILES:
   - lab_result_matrix.csv: Wide format matrix with lab results
@@ -203,9 +203,6 @@ perform_lab_analysis <- function(args, n_patients) {
   if (!file.exists(lab_subset_file)) {
     stop("Lab subset RDS file not found: ", lab_subset_file)
   }
-  if (!file.exists(cancer_subset_file)) {
-    stop("Cancer subset RDS file not found: ", cancer_subset_file)
-  }
   
   cat("Loading cohort data...\n")
   cohort <- readRDS(cohort_file)
@@ -213,13 +210,22 @@ perform_lab_analysis <- function(args, n_patients) {
   cat("Loading lab subset data...\n")
   lab_subset <- readRDS(lab_subset_file)
   
-  cat("Loading cancer subset data...\n")
-  cancer_subset <- readRDS(cancer_subset_file)
-  
-  cat("✓ RDS files loaded successfully\n")
-  cat("  - Cohort records:", nrow(cohort), "\n")
-  cat("  - Lab subset records:", nrow(lab_subset), "\n")
-  cat("  - Cancer subset records:", nrow(cancer_subset), "\n")
+  # Load cancer data if available (optional)
+  if (file.exists(cancer_subset_file)) {
+    cat("Loading cancer subset data...\n")
+    cancer_subset <- readRDS(cancer_subset_file)
+    cat("✓ RDS files loaded successfully\n")
+    cat("  - Cohort records:", nrow(cohort), "\n")
+    cat("  - Lab subset records:", nrow(lab_subset), "\n")
+    cat("  - Cancer subset records:", nrow(cancer_subset), "\n")
+  } else {
+    cat("No cancer data found, skipping...\n")
+    cancer_subset <- data.table()
+    cat("✓ RDS files loaded successfully\n")
+    cat("  - Cohort records:", nrow(cohort), "\n")
+    cat("  - Lab subset records:", nrow(lab_subset), "\n")
+    cat("  - Cancer subset records: 0 (not provided)\n")
+  }
   
   # =============================================================================
   # STAGE 2: PREPARE DATA FOR ANALYSIS

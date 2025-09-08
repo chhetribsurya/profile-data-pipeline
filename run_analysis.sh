@@ -226,7 +226,7 @@ run_analyze() {
     fi
     
     # Check if required RDS files exist
-    required_files=("cohort.rds" "lab_subset.rds" "cancer_subset.rds")
+    required_files=("cohort.rds" "lab_subset.rds")
     for file in "${required_files[@]}"; do
         if [[ ! -f "$INPUT_DIR/$file" ]]; then
             print_error "Required RDS file not found: $INPUT_DIR/$file"
@@ -234,6 +234,13 @@ run_analyze() {
             exit 1
         fi
     done
+    
+    # Check if optional cancer data exists
+    if [[ -f "$INPUT_DIR/cancer_subset.rds" ]]; then
+        print_success "Cancer data found: $INPUT_DIR/cancer_subset.rds"
+    else
+        print_warning "No cancer data found: $INPUT_DIR/cancer_subset.rds (optional)"
+    fi
     
     print_success "Starting lab analysis..."
     print_success "Input directory: $INPUT_DIR"

@@ -1,0 +1,79 @@
+# Docker Compose Configuration for Clinical Lab Analysis Pipeline
+#
+# This file defines a multi-container setup for the clinical lab analysis pipeline.
+#
+# Usage:
+#   docker-compose up -d
+#   docker-compose exec app ./run_analysis.sh full --input_dir /data/input --n_patients 5
+#   docker-compose down
+
+version: '3.8'
+
+services:
+  # Main application container
+  app:
+    build: .
+    container_name: clinical-lab-analysis
+    volumes:
+      # Mount your data directory
+      - ./data:/data
+      # Mount output directory
+      - ./output:/app/output
+      # Mount logs directory
+      - ./logs:/app/logs
+    environment:
+      - R_LIBS_USER=/usr/local/lib/R/site-library
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+    working_dir: /app
+    command: bash -c "echo 'Clinical Lab Analysis Pipeline is ready!' && echo 'Data directory: /data' && echo 'Output directory: /app/output' && bash"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  # Optional: RStudio server for interactive analysis
+  rstudio:
+    image: rocker/rstudio:4.2.0
+    container_name: clinical-lab-analysis-rstudio
+    ports:
+      - "8787:8787"
+    volumes:
+      - ./data:/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+    environment:
+      - PASSWORD=your_password_here
+      - R_LIBS_USER=/usr/local/lib/R/site-library
+    restart: unless-stopped
+    depends_on:
+      - app
+
+  # Optional: Jupyter notebook for Python analysis
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: clinical-lab-analysis-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data:/home/jovyan/data
+      - ./output:/home/jovyan/output
+      - ./logs:/home/jovyan/logs
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
+    depends_on:
+      - app
+
+# Volumes for persistent data
+volumes:
+  data:
+    driver: local
+  output:
+    driver: local
+  logs:
+    driver: local
+
+# Networks
+networks:
+  default:
+    name: clinical-lab-analysis-network

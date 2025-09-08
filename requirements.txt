@@ -1,0 +1,30 @@
+# Clinical Lab Analysis Pipeline - R Package Requirements
+# 
+# This file lists the required R packages for the clinical lab analysis pipeline.
+# Install these packages using: install.packages(c("data.table", "argparse"))
+#
+# For R version 3.6 or higher
+
+# Core data processing
+data.table>=1.12.0
+
+# Command line argument parsing
+argparse>=2.0.0
+
+# Optional packages for enhanced functionality
+# Uncomment if you want additional features:
+
+# For better date handling (optional)
+# lubridate>=1.7.0
+
+# For progress bars (optional)
+# progress>=1.2.0
+
+# For parallel processing (optional)
+# parallel>=3.6.0
+
+# For memory profiling (optional)
+# pryr>=0.1.4
+
+# For data validation (optional)
+# validate>=1.0.0

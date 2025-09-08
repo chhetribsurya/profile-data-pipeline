@@ -1,0 +1,37 @@
+# Conda Environment Configuration for Clinical Lab Analysis Pipeline
+# 
+# This file creates a conda environment with R and required packages.
+# 
+# Usage:
+#   conda env create -f environment.yml
+#   conda activate clinical-lab-analysis
+#
+# Or use mamba for faster installation:
+#   mamba env create -f environment.yml
+#   mamba activate clinical-lab-analysis
+
+name: clinical-lab-analysis
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # R and R packages
+  - r-base>=4.0.0
+  - r-data.table>=1.14.0
+  - r-argparse>=2.0.0
+  
+  # Optional R packages for enhanced functionality
+  - r-lubridate>=1.8.0
+  - r-progress>=1.2.0
+  - r-parallel>=4.0.0
+  - r-pryr>=0.1.4
+  - r-validate>=1.0.0
+  
+# Platform-specific dependencies
+# These will be installed automatically based on your platform
+platforms:
+  - linux-64
+  - osx-64
+  - win-64

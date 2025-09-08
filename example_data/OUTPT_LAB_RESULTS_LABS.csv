@@ -1,0 +1,169 @@
+DFCI_MRN,SPECIMEN_COLLECT_DT,TEST_TYPE_CD,TEST_TYPE_DESCR,TEXT_RESULT
+12345,14-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.5
+12345,14-Jan-20,12346,Complete Blood Count - Hemoglobin,12.3
+12345,14-Jan-20,12347,Complete Blood Count - Platelet Count,250
+12346,15-Jan-20,12345,Complete Blood Count - White Blood Cell Count,7.2
+12346,15-Jan-20,12346,Complete Blood Count - Hemoglobin,11.8
+12346,15-Jan-20,12348,Basic Metabolic Panel - Glucose,95
+12347,16-Jan-20,12345,Complete Blood Count - White Blood Cell Count,9.1
+12347,16-Jan-20,12346,Complete Blood Count - Hemoglobin,13.1
+12347,16-Jan-20,12349,Liver Function Panel - ALT,25
+12348,17-Jan-20,12345,Complete Blood Count - White Blood Cell Count,6.8
+12348,17-Jan-20,12346,Complete Blood Count - Hemoglobin,12.9
+12348,17-Jan-20,12350,Lipid Panel - Total Cholesterol,180
+12349,18-Jan-20,12345,Complete Blood Count - White Blood Cell Count,7.9
+12349,18-Jan-20,12346,Complete Blood Count - Hemoglobin,11.5
+12349,18-Jan-20,12351,Thyroid Function Panel - TSH,2.1
+12350,19-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.3
+12350,19-Jan-20,12346,Complete Blood Count - Hemoglobin,13.7
+12350,19-Jan-20,12352,Coagulation Panel - PT,12.5
+12351,20-Jan-20,12345,Complete Blood Count - White Blood Cell Count,6.5
+12351,20-Jan-20,12346,Complete Blood Count - Hemoglobin,12.1
+12351,20-Jan-20,12353,Cardiac Biomarkers - Troponin I,0.02
+12352,21-Jan-20,12345,Complete Blood Count - White Blood Cell Count,9.2
+12352,21-Jan-20,12346,Complete Blood Count - Hemoglobin,14.2
+12352,21-Jan-20,12354,Inflammatory Markers - CRP,1.2
+12353,22-Jan-20,12345,Complete Blood Count - White Blood Cell Count,7.6
+12353,22-Jan-20,12346,Complete Blood Count - Hemoglobin,11.9
+12353,22-Jan-20,12355,Tumor Markers - CEA,2.1
+12354,23-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.7
+12354,23-Jan-20,12346,Complete Blood Count - Hemoglobin,13.4
+12354,23-Jan-20,12356,Immunology Panel - ANA,1:40
+12355,24-Jan-20,12345,Complete Blood Count - White Blood Cell Count,6.9
+12355,24-Jan-20,12346,Complete Blood Count - Hemoglobin,12.6
+12355,24-Jan-20,12357,Endocrine Panel - Cortisol,15.2
+12356,25-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.1
+12356,25-Jan-20,12346,Complete Blood Count - Hemoglobin,13.8
+12356,25-Jan-20,12358,Microbiology - Blood Culture,No Growth
+12357,26-Jan-20,12345,Complete Blood Count - White Blood Cell Count,7.3
+12357,26-Jan-20,12346,Complete Blood Count - Hemoglobin,12.4
+12357,26-Jan-20,12359,Chemistry Panel - BUN,18
+12358,27-Jan-20,12345,Complete Blood Count - White Blood Cell Count,9.0
+12358,27-Jan-20,12346,Complete Blood Count - Hemoglobin,14.0
+12358,27-Jan-20,12360,Electrolyte Panel - Sodium,140
+12359,28-Jan-20,12345,Complete Blood Count - White Blood Cell Count,6.7
+12359,28-Jan-20,12346,Complete Blood Count - Hemoglobin,11.7
+12359,28-Jan-20,12361,Urinalysis - Protein,1+
+12360,29-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.4
+12360,29-Jan-20,12346,Complete Blood Count - Hemoglobin,13.2
+12360,29-Jan-20,12362,Stool Analysis - Occult Blood,Negative
+12361,30-Jan-20,12345,Complete Blood Count - White Blood Cell Count,7.8
+12361,30-Jan-20,12346,Complete Blood Count - Hemoglobin,12.8
+12361,30-Jan-20,12363,Serology - Hepatitis B Surface Antigen,Negative
+12362,31-Jan-20,12345,Complete Blood Count - White Blood Cell Count,8.9
+12362,31-Jan-20,12346,Complete Blood Count - Hemoglobin,13.9
+12362,31-Jan-20,12364,Virology - HIV Antibody,Negative
+12363,01-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.4
+12363,01-Feb-20,12346,Complete Blood Count - Hemoglobin,12.0
+12363,01-Feb-20,12365,Parasitology - Ova and Parasites,Negative
+12364,02-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.6
+12364,02-Feb-20,12346,Complete Blood Count - Hemoglobin,13.5
+12364,02-Feb-20,12366,Mycology - Fungal Culture,No Growth
+12365,03-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.1
+12365,03-Feb-20,12346,Complete Blood Count - Hemoglobin,11.6
+12365,03-Feb-20,12367,Bacteriology - Gram Stain,No Organisms
+12366,04-Feb-20,12345,Complete Blood Count - White Blood Cell Count,9.3
+12366,04-Feb-20,12346,Complete Blood Count - Hemoglobin,14.1
+12366,04-Feb-20,12368,Histopathology - Biopsy,Benign
+12367,05-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.8
+12367,05-Feb-20,12346,Complete Blood Count - Hemoglobin,12.3
+12367,05-Feb-20,12369,Cytology - Pap Smear,Normal
+12368,06-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.2
+12368,06-Feb-20,12346,Complete Blood Count - Hemoglobin,13.6
+12368,06-Feb-20,12370,Flow Cytometry - CD4 Count,450
+12369,07-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.5
+12369,07-Feb-20,12346,Complete Blood Count - Hemoglobin,12.7
+12369,07-Feb-20,12371,Molecular Diagnostics - PCR,Positive
+12370,08-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.8
+12370,08-Feb-20,12346,Complete Blood Count - Hemoglobin,13.3
+12370,08-Feb-20,12372,Genetic Testing - BRCA1,Negative
+12371,09-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.6
+12371,09-Feb-20,12346,Complete Blood Count - Hemoglobin,11.8
+12371,09-Feb-20,12373,Pharmacogenomics - CYP2D6,Extensive Metabolizer
+12372,10-Feb-20,12345,Complete Blood Count - White Blood Cell Count,9.1
+12372,10-Feb-20,12346,Complete Blood Count - Hemoglobin,14.3
+12372,10-Feb-20,12374,Proteomics - Protein Electrophoresis,Normal
+12373,11-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.4
+12373,11-Feb-20,12346,Complete Blood Count - Hemoglobin,12.5
+12373,11-Feb-20,12375,Metabolomics - Organic Acids,Normal
+12374,12-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.3
+12374,12-Feb-20,12346,Complete Blood Count - Hemoglobin,13.1
+12374,12-Feb-20,12376,Biomarker Panel - Multi-marker,Low Risk
+12375,13-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.9
+12375,13-Feb-20,12346,Complete Blood Count - Hemoglobin,12.2
+12375,13-Feb-20,12377,Therapeutic Drug Monitoring - Digoxin,1.2
+12376,14-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.5
+12376,14-Feb-20,12346,Complete Blood Count - Hemoglobin,13.7
+12376,14-Feb-20,12378,Allergy Testing - RAST,Class 2
+12377,15-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.2
+12377,15-Feb-20,12346,Complete Blood Count - Hemoglobin,11.9
+12377,15-Feb-20,12379,Autoimmune Panel - RF,15
+12378,16-Feb-20,12345,Complete Blood Count - White Blood Cell Count,9.0
+12378,16-Feb-20,12346,Complete Blood Count - Hemoglobin,14.0
+12378,16-Feb-20,12380,Complement Panel - C3,120
+12379,17-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.7
+12379,17-Feb-20,12346,Complete Blood Count - Hemoglobin,12.1
+12379,17-Feb-20,12381,Immunoglobulin Panel - IgG,1200
+12380,18-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.7
+12380,18-Feb-20,12346,Complete Blood Count - Hemoglobin,13.4
+12380,18-Feb-20,12382,Coagulation Panel - aPTT,28
+12381,19-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.6
+12381,19-Feb-20,12346,Complete Blood Count - Hemoglobin,12.8
+12381,19-Feb-20,12383,Thrombosis Panel - D-Dimer,0.5
+12382,20-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.9
+12382,20-Feb-20,12346,Complete Blood Count - Hemoglobin,13.8
+12382,20-Feb-20,12384,Hematology Panel - Reticulocyte Count,1.2
+12383,21-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.5
+12383,21-Feb-20,12346,Complete Blood Count - Hemoglobin,11.5
+12383,21-Feb-20,12385,Blood Bank - Blood Type,O Positive
+12384,22-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.4
+12384,22-Feb-20,12346,Complete Blood Count - Hemoglobin,13.2
+12384,22-Feb-20,12386,Transfusion Medicine - Crossmatch,Compatible
+12385,23-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.8
+12385,23-Feb-20,12346,Complete Blood Count - Hemoglobin,12.6
+12385,23-Feb-20,12387,Clinical Chemistry - Albumin,4.2
+12386,24-Feb-20,12345,Complete Blood Count - White Blood Cell Count,9.2
+12386,24-Feb-20,12346,Complete Blood Count - Hemoglobin,14.1
+12386,24-Feb-20,12388,Endocrinology - Insulin,8.5
+12387,25-Feb-20,12345,Complete Blood Count - White Blood Cell Count,6.8
+12387,25-Feb-20,12346,Complete Blood Count - Hemoglobin,12.4
+12387,25-Feb-20,12389,Reproductive Health - FSH,5.2
+12388,26-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.6
+12388,26-Feb-20,12346,Complete Blood Count - Hemoglobin,13.5
+12388,26-Feb-20,12390,Oncology - PSA,1.8
+12389,27-Feb-20,12345,Complete Blood Count - White Blood Cell Count,7.3
+12389,27-Feb-20,12346,Complete Blood Count - Hemoglobin,12.3
+12389,27-Feb-20,12391,Cardiology - BNP,150
+12390,28-Feb-20,12345,Complete Blood Count - White Blood Cell Count,8.8
+12390,28-Feb-20,12346,Complete Blood Count - Hemoglobin,13.9
+12390,28-Feb-20,12392,Pulmonology - Spirometry,FEV1 85%
+12391,01-Mar-20,12345,Complete Blood Count - White Blood Cell Count,6.9
+12391,01-Mar-20,12346,Complete Blood Count - Hemoglobin,12.0
+12391,01-Mar-20,12393,Gastroenterology - Celiac Panel,Negative
+12392,02-Mar-20,12345,Complete Blood Count - White Blood Cell Count,9.1
+12392,02-Mar-20,12346,Complete Blood Count - Hemoglobin,14.2
+12392,02-Mar-20,12394,Nephrology - Creatinine Clearance,95
+12393,03-Mar-20,12345,Complete Blood Count - White Blood Cell Count,7.1
+12393,03-Mar-20,12346,Complete Blood Count - Hemoglobin,11.7
+12393,03-Mar-20,12395,Neurology - CSF Analysis,Normal
+12394,04-Mar-20,12345,Complete Blood Count - White Blood Cell Count,8.5
+12394,04-Mar-20,12346,Complete Blood Count - Hemoglobin,13.6
+12394,04-Mar-20,12396,Dermatology - Patch Testing,Negative
+12395,05-Mar-20,12345,Complete Blood Count - White Blood Cell Count,6.7
+12395,05-Mar-20,12346,Complete Blood Count - Hemoglobin,12.2
+12395,05-Mar-20,12397,Ophthalmology - Visual Field,Normal
+12396,06-Mar-20,12345,Complete Blood Count - White Blood Cell Count,8.9
+12396,06-Mar-20,12346,Complete Blood Count - Hemoglobin,13.8
+12396,06-Mar-20,12398,Otolaryngology - Audiometry,Normal
+12397,07-Mar-20,12345,Complete Blood Count - White Blood Cell Count,7.4
+12397,07-Mar-20,12346,Complete Blood Count - Hemoglobin,12.5
+12397,07-Mar-20,12399,Orthopedics - Bone Density,T-Score -1.2
+12398,08-Mar-20,12345,Complete Blood Count - White Blood Cell Count,8.3
+12398,08-Mar-20,12346,Complete Blood Count - Hemoglobin,13.3
+12398,08-Mar-20,12400,Rheumatology - ANA Pattern,Speckled
+12399,09-Mar-20,12345,Complete Blood Count - White Blood Cell Count,6.6
+12399,09-Mar-20,12346,Complete Blood Count - Hemoglobin,11.9
+12399,09-Mar-20,12401,Infectious Disease - Viral Load,Undetectable
+12400,10-Mar-20,12345,Complete Blood Count - White Blood Cell Count,8.7
+12400,10-Mar-20,12346,Complete Blood Count - Hemoglobin,13.7
+12400,10-Mar-20,12402,Public Health - Vaccination Status,Up to Date

@@ -1,0 +1,57 @@
+DFCI_MRN,SITE_DESCR,HISTOLOGY_DESCR,GRADE_DIFF_DESC,DATE_FIRST_BIOPSY,SSDI_KI_67,SURVIVAL_AFTER_DIAGNOSIS_NBR
+12345,Breast,Invasive Ductal Carcinoma,Moderate,10-Jan-20,15,365
+12346,Lung,Adenocarcinoma,Moderate,11-Jan-20,25,450
+12347,Colon,Adenocarcinoma,Well,12-Jan-20,10,600
+12348,Prostate,Adenocarcinoma,Moderate,13-Jan-20,20,800
+12349,Breast,Invasive Lobular Carcinoma,Moderate,14-Jan-20,18,300
+12350,Lung,Squamous Cell Carcinoma,Poor,15-Jan-20,35,200
+12351,Pancreas,Adenocarcinoma,Poor,16-Jan-20,40,150
+12352,Liver,Hepatocellular Carcinoma,Moderate,17-Jan-20,30,180
+12353,Kidney,Clear Cell Carcinoma,Moderate,18-Jan-20,22,400
+12354,Bladder,Transitional Cell Carcinoma,Moderate,19-Jan-20,28,350
+12355,Brain,Glioblastoma Multiforme,Poor,20-Jan-20,45,90
+12356,Ovary,Serous Carcinoma,Moderate,21-Jan-20,32,250
+12357,Cervix,Squamous Cell Carcinoma,Moderate,22-Jan-20,26,300
+12358,Endometrium,Endometrioid Carcinoma,Well,23-Jan-20,12,500
+12359,Stomach,Adenocarcinoma,Moderate,24-Jan-20,24,200
+12360,Esophagus,Adenocarcinoma,Moderate,25-Jan-20,29,180
+12361,Rectum,Adenocarcinoma,Moderate,26-Jan-20,21,400
+12362,Anus,Squamous Cell Carcinoma,Moderate,27-Jan-20,27,250
+12363,Thyroid,Papillary Carcinoma,Well,28-Jan-20,8,800
+12364,Adrenal,Adrenocortical Carcinoma,Poor,29-Jan-20,38,120
+12365,Testis,Seminoma,Moderate,30-Jan-20,16,600
+12366,Prostate,Adenocarcinoma,Well,31-Jan-20,14,900
+12367,Breast,Invasive Ductal Carcinoma,Poor,01-Feb-20,42,150
+12368,Lung,Small Cell Carcinoma,Poor,02-Feb-20,48,100
+12369,Colon,Adenocarcinoma,Moderate,03-Feb-20,19,500
+12370,Pancreas,Adenocarcinoma,Moderate,04-Feb-20,33,200
+12371,Liver,Cholangiocarcinoma,Moderate,05-Feb-20,31,180
+12372,Kidney,Papillary Carcinoma,Moderate,06-Feb-20,23,400
+12373,Bladder,Transitional Cell Carcinoma,Poor,07-Feb-20,37,200
+12374,Brain,Anaplastic Astrocytoma,Moderate,08-Feb-20,35,120
+12375,Ovary,Mucinous Carcinoma,Moderate,09-Feb-20,26,300
+12376,Cervix,Adenocarcinoma,Moderate,10-Feb-20,24,350
+12377,Endometrium,Serous Carcinoma,Poor,11-Feb-20,41,150
+12378,Stomach,Signet Ring Cell Carcinoma,Poor,12-Feb-20,44,100
+12379,Esophagus,Squamous Cell Carcinoma,Moderate,13-Feb-20,28,200
+12380,Rectum,Adenocarcinoma,Poor,14-Feb-20,36,180
+12381,Anus,Adenocarcinoma,Moderate,15-Feb-20,25,250
+12382,Thyroid,Follicular Carcinoma,Moderate,16-Feb-20,18,700
+12383,Adrenal,Neuroblastoma,Poor,17-Feb-20,45,90
+12384,Testis,Non-seminoma,Moderate,18-Feb-20,29,400
+12385,Prostate,Adenocarcinoma,Moderate,19-Feb-20,17,800
+12386,Breast,Invasive Ductal Carcinoma,Well,20-Feb-20,11,600
+12387,Lung,Adenocarcinoma,Poor,21-Feb-20,39,150
+12388,Colon,Adenocarcinoma,Moderate,22-Feb-20,20,450
+12389,Pancreas,Adenocarcinoma,Poor,23-Feb-20,43,120
+12390,Liver,Hepatocellular Carcinoma,Poor,24-Feb-20,41,100
+12391,Kidney,Chromophobe Carcinoma,Moderate,25-Feb-20,19,500
+12392,Bladder,Transitional Cell Carcinoma,Well,26-Feb-20,13,600
+12393,Brain,Oligodendroglioma,Moderate,27-Feb-20,22,300
+12394,Ovary,Endometrioid Carcinoma,Moderate,28-Feb-20,21,400
+12395,Cervix,Squamous Cell Carcinoma,Poor,29-Feb-20,34,180
+12396,Endometrium,Clear Cell Carcinoma,Poor,01-Mar-20,40,150
+12397,Stomach,Adenocarcinoma,Moderate,02-Mar-20,27,250
+12398,Esophagus,Adenocarcinoma,Poor,03-Mar-20,38,120
+12399,Rectum,Adenocarcinoma,Well,04-Mar-20,15,500
+12400,Anus,Squamous Cell Carcinoma,Moderate,05-Mar-20,26,300

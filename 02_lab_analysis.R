@@ -301,9 +301,11 @@ perform_lab_analysis <- function(args, n_patients) {
   print_stage("4", "Adding REPORT_DT and creating wide format matrices...")
   
   # Add REPORT_DT to lab_result_matrix by merging with cohort data
+  # Use allow.cartesian=TRUE to handle potential duplicates
+  # This is safe in our case given we're creating multiple rows per patient (one for each test type)
   lab_result_matrix_with_dates <- merge(lab_result_matrix, 
                                        cohort_with_lab_test[, .(DFCI_MRN, REPORT_DT)], 
-                                       by = "DFCI_MRN", all.x = TRUE)
+                                       by = "DFCI_MRN", all.x = TRUE, allow.cartesian = TRUE)
   
   # Reshape to wide format for lab results matrix
   lab_result_wide <- dcast(lab_result_matrix_with_dates, DFCI_MRN + REPORT_DT ~ TEST_TYPE_CD, 

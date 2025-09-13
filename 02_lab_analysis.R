@@ -307,6 +307,15 @@ perform_lab_analysis <- function(args, n_patients) {
                                        cohort_with_lab_test[, .(DFCI_MRN, REPORT_DT)], 
                                        by = "DFCI_MRN", all.x = TRUE, allow.cartesian = TRUE)
   
+  # Debug: Check the data before dcast
+  cat("Debug: Sample data before dcast:\n")
+  if (nrow(lab_result_matrix_with_dates) > 0) {
+    sample_data <- lab_result_matrix_with_dates[!is.na(TEXT_RESULT) & TEXT_RESULT != ""][1:min(5, nrow(lab_result_matrix_with_dates[!is.na(TEXT_RESULT) & TEXT_RESULT != ""]))]
+    if (nrow(sample_data) > 0) {
+      print(sample_data[, .(DFCI_MRN, TEST_TYPE_CD, TEXT_RESULT, SPECIMEN_COLLECT_DT, REPORT_DT)])
+    }
+  }
+  
   # Reshape to wide format for lab results matrix
   lab_result_wide <- dcast(lab_result_matrix_with_dates, DFCI_MRN + REPORT_DT ~ TEST_TYPE_CD, 
                           value.var = "TEXT_RESULT", fill = NA_character_)
@@ -318,6 +327,12 @@ perform_lab_analysis <- function(args, n_patients) {
   cat("✓ Wide format matrices created\n")
   cat("  - Lab result matrix dimensions:", nrow(lab_result_wide), "x", ncol(lab_result_wide), "\n")
   cat("  - Lab date matrix dimensions:", nrow(lab_date_wide), "x", ncol(lab_date_wide), "\n")
+  
+  # Debug: Check the wide format data
+  cat("Debug: Sample wide format data:\n")
+  if (nrow(lab_result_wide) > 0) {
+    print(lab_result_wide[1:min(3, nrow(lab_result_wide)), 1:min(8, ncol(lab_result_wide))])
+  }
   
   # =============================================================================
   # STAGE 5: REMOVE DIGIT-ONLY COLUMNS

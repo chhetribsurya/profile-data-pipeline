@@ -316,7 +316,21 @@ perform_lab_analysis <- function(args, n_patients) {
     }
   }
   
+  # Check for duplicates before dcast
+  duplicates <- lab_result_matrix_with_dates[, .N, by = .(DFCI_MRN, REPORT_DT, TEST_TYPE_CD)][N > 1]
+  if (nrow(duplicates) > 0) {
+    cat("Warning: Found", nrow(duplicates), "duplicate combinations of [DFCI_MRN, REPORT_DT, TEST_TYPE_CD]\n")
+    cat("Sample duplicates:\n")
+    print(duplicates[1:min(5, nrow(duplicates))])
+    
+    # For duplicates, we'll take the one with the smallest DATE_DIFF (closest to reference date)
+    # This ensures we get the most relevant lab result for each combination
+    lab_result_matrix_with_dates <- lab_result_matrix_with_dates[lab_result_matrix_with_dates[, .I[which.min(DATE_DIFF)], by = .(DFCI_MRN, REPORT_DT, TEST_TYPE_CD)]$V1]
+    cat("Removed duplicates (kept closest by date), remaining records:", nrow(lab_result_matrix_with_dates), "\n")
+  }
+  
   # Reshape to wide format for lab results matrix
+  # Now we can safely use dcast without aggregation since we've removed duplicates
   lab_result_wide <- dcast(lab_result_matrix_with_dates, DFCI_MRN + REPORT_DT ~ TEST_TYPE_CD, 
                           value.var = "TEXT_RESULT", fill = NA_character_)
   
@@ -332,6 +346,23 @@ perform_lab_analysis <- function(args, n_patients) {
   cat("Debug: Sample wide format data:\n")
   if (nrow(lab_result_wide) > 0) {
     print(lab_result_wide[1:min(3, nrow(lab_result_wide)), 1:min(8, ncol(lab_result_wide))])
+  }
+  
+  # Debug: Check for any remaining numeric values that might indicate counting instead of TEXT_RESULT
+  cat("Debug: Checking for numeric values in lab result matrix (should be TEXT_RESULT values, not counts):\n")
+  if (nrow(lab_result_wide) > 0) {
+    # Check a few columns for numeric values
+    sample_cols <- names(lab_result_wide)[3:min(8, ncol(lab_result_wide))]
+    for (col in sample_cols) {
+      if (is.character(lab_result_wide[[col]])) {
+        numeric_vals <- lab_result_wide[!is.na(get(col)) & get(col) != "" & grepl("^[0-9]+$", get(col)), .N]
+        if (numeric_vals > 0) {
+          cat("  Column", col, "has", numeric_vals, "purely numeric values (might be counts):\n")
+          sample_vals <- lab_result_wide[!is.na(get(col)) & get(col) != "" & grepl("^[0-9]+$", get(col)), get(col)][1:min(5, numeric_vals)]
+          cat("    Sample values:", paste(sample_vals, collapse = ", "), "\n")
+        }
+      }
+    }
   }
   
   # =============================================================================

@@ -8,12 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Initial release of the Clinical Lab Analysis Pipeline
-- Comprehensive README with detailed usage guide
-- Docker support with Dockerfile and docker-compose.yml
-- Conda environment configuration
-- Automated setup script (setup.R)
-- Contributing guidelines and documentation
+- N/A
 
 ### Changed
 - N/A
@@ -29,6 +24,92 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - N/A
+
+## [2.0.0] - 2024-01-15
+
+### Added
+- **Smart Caching System**
+  - Automatic detection of cached RDS files
+  - Instant loading of previously processed results
+  - File timestamp validation to ensure data freshness
+  - `--force_reprocess` option to override caching
+  - Significant performance improvement for repeated runs
+
+- **Duplicate Handling with MRN Suffixes**
+  - Intelligent handling of multiple lab results per patient
+  - MRN suffix system (e.g., 12345_1, 12345_2) for unique identification
+  - Eliminates the 1,2,3,4,5 count values in matrices
+  - Preserves all lab results without data loss
+  - Resolves duplicate MRN issues in matrix format
+
+- **Multiple Output Formats**
+  - `lab_results_long_format.csv/.rds` - Complete dataset with all lab results including duplicates
+  - `lab_result_matrix_with_suffixes.csv/.rds` - Wide format with MRN suffixes for multiple test types
+  - `lab_date_matrix_with_suffixes.csv/.rds` - Wide format dates with MRN suffixes
+  - Enhanced summary statistics with comprehensive metrics
+
+- **Enhanced Documentation**
+  - Updated README with new features and examples
+  - Example output files demonstrating new formats
+  - Comprehensive usage examples for caching and duplicate handling
+  - Updated project structure documentation
+
+- **Example Output Files**
+  - `example_outputs/` directory with sample output files
+  - Demonstrates all new output formats
+  - Shows duplicate handling and MRN suffix system
+  - Includes comprehensive documentation
+
+### Changed
+- **Lab Analysis Script** (`02_lab_analysis.R`)
+  - Moved caching check to Stage 0 (before any processing)
+  - Enhanced duplicate detection and handling
+  - Added MRN suffix generation for multiple test types
+  - Improved error handling and debugging information
+  - Updated summary statistics to include new metrics
+
+- **Output File Structure**
+  - Standard matrices now clearly marked as "deduplicated"
+  - New long format files include all data without duplicate removal
+  - Suffix-based matrices handle complex patient scenarios
+  - Enhanced file descriptions and documentation
+
+- **Command Line Interface**
+  - Added `--force_reprocess` argument to override caching
+  - Enhanced help text and documentation
+  - Updated examples to demonstrate new features
+
+### Fixed
+- **Duplicate Issue Resolution**
+  - Fixed the 1,2,3,4,5 count values appearing in matrices
+  - Proper handling of multiple lab results per patient
+  - Eliminated dcast warnings about duplicate combinations
+  - Ensured actual lab values are used instead of counts
+
+- **Caching System**
+  - Fixed caching check timing (now happens before processing)
+  - Proper file timestamp validation
+  - Correct handling of missing or outdated cache files
+
+### Performance
+- **Caching Benefits**
+  - First run: Full processing + saves RDS files
+  - Subsequent runs: Instant loading from cache
+  - Significant time savings for repeated analysis
+  - Automatic cache validation and refresh
+
+- **Memory Optimization**
+  - Efficient handling of large datasets with duplicates
+  - Optimized data structures for suffix-based matrices
+  - Improved memory usage for complex patient scenarios
+
+### Security
+- **Data Integrity**
+  - Enhanced validation of cached files
+  - Proper handling of file permissions
+  - Secure data processing without external dependencies
+
+## [1.0.0] - 2024-01-XX
 
 ## [1.0.0] - 2024-01-XX
 

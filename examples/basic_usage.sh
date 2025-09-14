@@ -204,12 +204,88 @@ example_5() {
     fi
 }
 
+# Example 6: Caching system demonstration
+example_6() {
+    print_header "EXAMPLE 6: Caching System Demonstration"
+    
+    echo "First run - full processing..."
+    echo "Command: ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo"
+    echo ""
+    
+    ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo
+    
+    if [ $? -eq 0 ]; then
+        print_success "First run completed successfully"
+    else
+        print_error "First run failed"
+        return 1
+    fi
+    
+    echo ""
+    echo "Second run - should load from cache (instant!)..."
+    echo "Command: ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo"
+    echo ""
+    
+    ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo
+    
+    if [ $? -eq 0 ]; then
+        print_success "Second run completed successfully (loaded from cache)"
+    else
+        print_error "Second run failed"
+        return 1
+    fi
+    
+    echo ""
+    echo "Third run - force reprocessing..."
+    echo "Command: ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo --force_reprocess"
+    echo ""
+    
+    ./run_analysis.sh full --input_dir example_data --n_patients 5 --output_dir ./cache_demo --force_reprocess
+    
+    if [ $? -eq 0 ]; then
+        print_success "Third run completed successfully (forced reprocessing)"
+    else
+        print_error "Third run failed"
+        return 1
+    fi
+}
+
+# Example 7: New output formats demonstration
+example_7() {
+    print_header "EXAMPLE 7: New Output Formats Demonstration"
+    
+    echo "Running pipeline to demonstrate new output formats..."
+    echo "Command: ./run_analysis.sh full --input_dir example_data --n_patients 10 --output_dir ./new_formats_demo"
+    echo ""
+    
+    ./run_analysis.sh full --input_dir example_data --n_patients 10 --output_dir ./new_formats_demo
+    
+    if [ $? -eq 0 ]; then
+        print_success "New formats demonstration completed successfully"
+        echo "Results saved to: ./new_formats_demo"
+        
+        echo ""
+        echo "New output files created:"
+        echo "  ✓ lab_result_matrix.csv (deduplicated wide format)"
+        echo "  ✓ lab_date_matrix.csv (deduplicated wide format dates)"
+        echo "  ✓ detailed_lab_results.csv (deduplicated long format)"
+        echo "  ✓ lab_results_long_format.csv (all data long format)"
+        echo "  ✓ lab_result_matrix_with_suffixes.csv (wide format with MRN suffixes)"
+        echo "  ✓ lab_date_matrix_with_suffixes.csv (wide format dates with suffixes)"
+        echo "  ✓ summary_statistics.csv (analysis summary)"
+        echo "  ✓ lab_analysis_summary.txt (text summary)"
+    else
+        print_error "New formats demonstration failed"
+        return 1
+    fi
+}
+
 # Show results summary
 show_results() {
     print_header "RESULTS SUMMARY"
     
     echo "Output directories created:"
-    for dir in prepared_data lab_analysis_results custom_results step1_output step2_output results_6month results_1year; do
+    for dir in prepared_data lab_analysis_results custom_results step1_output step2_output results_6month results_1year cache_demo new_formats_demo; do
         if [ -d "$dir" ]; then
             echo "  ✓ $dir"
             echo "    Files: $(ls -1 $dir | wc -l)"
@@ -220,17 +296,32 @@ show_results() {
     
     echo ""
     echo "Key output files:"
-    for dir in prepared_data lab_analysis_results custom_results step2_output results_6month results_1year; do
+    for dir in prepared_data lab_analysis_results custom_results step2_output results_6month results_1year cache_demo new_formats_demo; do
         if [ -d "$dir" ]; then
             echo "  $dir/:"
             if [ -f "$dir/lab_result_matrix.csv" ]; then
-                echo "    ✓ lab_result_matrix.csv"
+                echo "    ✓ lab_result_matrix.csv (deduplicated wide format)"
             fi
             if [ -f "$dir/lab_date_matrix.csv" ]; then
-                echo "    ✓ lab_date_matrix.csv"
+                echo "    ✓ lab_date_matrix.csv (deduplicated wide format dates)"
+            fi
+            if [ -f "$dir/detailed_lab_results.csv" ]; then
+                echo "    ✓ detailed_lab_results.csv (deduplicated long format)"
+            fi
+            if [ -f "$dir/lab_results_long_format.csv" ]; then
+                echo "    ✓ lab_results_long_format.csv (all data long format)"
+            fi
+            if [ -f "$dir/lab_result_matrix_with_suffixes.csv" ]; then
+                echo "    ✓ lab_result_matrix_with_suffixes.csv (wide format with MRN suffixes)"
+            fi
+            if [ -f "$dir/lab_date_matrix_with_suffixes.csv" ]; then
+                echo "    ✓ lab_date_matrix_with_suffixes.csv (wide format dates with suffixes)"
             fi
             if [ -f "$dir/summary_statistics.csv" ]; then
-                echo "    ✓ summary_statistics.csv"
+                echo "    ✓ summary_statistics.csv (analysis summary)"
+            fi
+            if [ -f "$dir/lab_analysis_summary.txt" ]; then
+                echo "    ✓ lab_analysis_summary.txt (text summary)"
             fi
         fi
     done
@@ -243,7 +334,7 @@ cleanup() {
     echo "Cleaning up temporary directories..."
     
     # Remove temporary directories
-    for dir in custom_results step1_output step2_output results_6month results_1year; do
+    for dir in custom_results step1_output step2_output results_6month results_1year cache_demo new_formats_demo; do
         if [ -d "$dir" ]; then
             rm -rf "$dir"
             echo "  Removed: $dir"
@@ -282,6 +373,12 @@ main() {
     echo ""
     
     example_5
+    echo ""
+    
+    example_6
+    echo ""
+    
+    example_7
     echo ""
     
     # Show results

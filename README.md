@@ -46,6 +46,9 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Date Matching**: Finds nearest lab results within specified time windows
 - **Flexible Processing**: Supports processing subsets or all patients
 - **Comprehensive Reporting**: Generates detailed summaries and statistics
+- **Smart Caching**: RDS file caching to avoid reprocessing existing results
+- **Duplicate Handling**: Intelligent handling of multiple lab results per patient
+- **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
 
 ## ✨ Features
 
@@ -57,6 +60,10 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Comprehensive Reporting**: Detailed summaries and statistics
 - **Easy-to-Use Wrapper**: Single script to run complete pipeline
 - **Optimized Storage**: RDS format for fast loading and small file sizes
+- **Smart Caching System**: Automatically uses cached results to avoid reprocessing
+- **Duplicate Resolution**: Handles multiple lab results per patient with MRN suffixes
+- **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
+- **Force Reprocessing**: Option to override caching when needed
 
 ## 📦 Requirements
 
@@ -198,9 +205,12 @@ Rscript 02_lab_analysis.R \
 - Generates comprehensive reports
 
 **Output Files**:
-- `lab_result_matrix.csv/.rds`: Wide format lab results
-- `lab_date_matrix.csv/.rds`: Wide format lab dates
-- `detailed_lab_results.csv/.rds`: Detailed results with date differences
+- `lab_result_matrix.csv/.rds`: Wide format lab results (deduplicated)
+- `lab_date_matrix.csv/.rds`: Wide format lab dates (deduplicated)
+- `detailed_lab_results.csv/.rds`: Detailed results with date differences (deduplicated)
+- `lab_results_long_format.csv/.rds`: Long format with ALL lab results (including duplicates)
+- `lab_result_matrix_with_suffixes.csv/.rds`: Wide format with MRN suffixes for multiple test types
+- `lab_date_matrix_with_suffixes.csv/.rds`: Wide format dates with MRN suffixes
 - `summary_statistics.csv`: Analysis summary
 
 ### 3. Wrapper Script (`run_analysis.sh`)
@@ -264,9 +274,12 @@ After running the data preparation step, your `./prepared_data/` directory will 
 
 | File | Description | Format |
 |------|-------------|--------|
-| `lab_result_matrix.csv/.rds` | Wide format lab results | CSV/RDS |
-| `lab_date_matrix.csv/.rds` | Wide format lab dates | CSV/RDS |
-| `detailed_lab_results.csv/.rds` | Detailed results with date differences | CSV/RDS |
+| `lab_result_matrix.csv/.rds` | Wide format lab results (deduplicated) | CSV/RDS |
+| `lab_date_matrix.csv/.rds` | Wide format lab dates (deduplicated) | CSV/RDS |
+| `detailed_lab_results.csv/.rds` | Detailed results with date differences (deduplicated) | CSV/RDS |
+| `lab_results_long_format.csv/.rds` | Long format with ALL lab results (including duplicates) | CSV/RDS |
+| `lab_result_matrix_with_suffixes.csv/.rds` | Wide format with MRN suffixes for multiple test types | CSV/RDS |
+| `lab_date_matrix_with_suffixes.csv/.rds` | Wide format dates with MRN suffixes | CSV/RDS |
 | `summary_statistics.csv` | Analysis summary | CSV |
 | `lab_analysis_summary.txt` | Text summary | TXT |
 
@@ -287,7 +300,27 @@ After running the data preparation step, your `./prepared_data/` directory will 
 #### Detailed Lab Results
 - **Format**: Long format
 - **Columns**: `DFCI_MRN`, `TEST_TYPE_CD`, `TEXT_RESULT`, `SPECIMEN_COLLECT_DT`, `DATE_DIFF`, `REPORT_DT`
-- **Purpose**: Detailed view of all lab results with date differences
+- **Purpose**: Detailed view of all lab results with date differences (deduplicated)
+
+#### Lab Results Long Format
+- **Format**: Long format
+- **Columns**: `DFCI_MRN`, `TEST_TYPE_CD`, `TEXT_RESULT`, `SPECIMEN_COLLECT_DT`, `DATE_DIFF`, `REPORT_DT`
+- **Purpose**: Complete dataset with ALL lab results including duplicates
+- **Use Case**: Comprehensive analysis without any data loss
+
+#### Lab Result Matrix with Suffixes
+- **Format**: Wide format (patients × test types)
+- **Columns**: `ORIGINAL_MRN`, `UNIQUE_MRN`, `REPORT_DT`, `[TEST_TYPE_CD]...`
+- **Values**: Lab result values (`TEXT_RESULT`)
+- **Purpose**: Handles multiple test types per patient using MRN suffixes
+- **Use Case**: Resolves duplicate MRN issues in matrix format
+
+#### Lab Date Matrix with Suffixes
+- **Format**: Wide format (patients × test types)
+- **Columns**: `ORIGINAL_MRN`, `UNIQUE_MRN`, `REPORT_DT`, `[TEST_TYPE_CD]...`
+- **Values**: Collection dates (`SPECIMEN_COLLECT_DT`)
+- **Purpose**: Corresponding dates for suffix-based matrix
+- **Use Case**: Date tracking for multiple test types per patient
 
 ## ⚙️ Configuration Options
 
@@ -312,6 +345,7 @@ After running the data preparation step, your `./prepared_data/` directory will 
 | `--output_dir` | `./lab_analysis_results` | Output directory for results |
 | `--max_date_diff` | `365` | Maximum date difference in days |
 | `--remove_digit_cols` | `TRUE` | Remove columns with only digit names |
+| `--force_reprocess` | `FALSE` | Force reprocessing even if cached results exist |
 
 #### Wrapper Script
 
@@ -322,6 +356,54 @@ After running the data preparation step, your `./prepared_data/` directory will 
 | `--n_patients` | `5` | Number of patients to process |
 | `--max_date_diff` | `365` | Maximum date difference in days |
 | `--no_remove_digits` | `false` | Don't remove digit-only columns |
+
+## 🚀 New Features
+
+### Smart Caching System
+
+The pipeline now includes an intelligent caching system that automatically detects and uses previously processed results:
+
+- **Automatic Detection**: Checks if RDS files exist and are newer than input files
+- **Instant Loading**: Loads cached results instead of reprocessing
+- **Force Override**: Use `--force_reprocess` to override caching when needed
+- **Performance Boost**: Significantly faster subsequent runs
+
+```bash
+# First run - full processing
+Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients all
+
+# Second run - loads from cache (instant!)
+Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients all
+
+# Force reprocessing even if cache exists
+Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients all --force_reprocess
+```
+
+### Duplicate Handling with MRN Suffixes
+
+The pipeline now intelligently handles multiple lab results per patient:
+
+- **Problem Solved**: Eliminates the 1,2,3,4,5 count values in matrices
+- **MRN Suffixes**: Creates unique identifiers (e.g., `12345_1`, `12345_2`)
+- **Preserves Data**: Keeps all lab results without data loss
+- **Multiple Formats**: Provides both deduplicated and complete datasets
+
+**Example Output:**
+```
+ORIGINAL_MRN | UNIQUE_MRN | REPORT_DT  | HEMOGLOBIN | CREATININE | GLUCOSE
+-------------|------------|------------|------------|------------|--------
+12345        | 12345_1    | 2023-01-15 | 12.5       | 1.2        | 95
+12345        | 12345_2    | 2023-01-15 | 13.2       | 1.4        | NA
+```
+
+### Multiple Output Formats
+
+The pipeline now generates comprehensive output files:
+
+1. **Deduplicated Matrices**: Standard wide format with nearest lab results
+2. **Long Format**: Complete dataset with all lab results including duplicates
+3. **Suffix Matrices**: Wide format with MRN suffixes for multiple test types
+4. **Date Matrices**: Corresponding date information for all formats
 
 ## 📚 Examples
 
@@ -496,6 +578,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **v1.0.0**: Initial release with basic pipeline functionality
 - **v1.1.0**: Added wrapper script and improved error handling
 - **v1.2.0**: Enhanced reporting and configuration options
+- **v2.0.0**: Major update with smart caching, duplicate handling, and multiple output formats
+  - Added intelligent RDS file caching system
+  - Implemented MRN suffix system for duplicate handling
+  - Added long format output with all lab results
+  - Added suffix-based matrices for multiple test types per patient
+  - Added force reprocessing option
+  - Enhanced documentation and examples
 
 ---
 

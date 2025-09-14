@@ -41,6 +41,16 @@ clinical-lab-analysis-pipeline/
 │   ├── cohortmrn_merge.data.csv       # Example cohort data
 │   ├── OUTPT_LAB_RESULTS_LABS.csv     # Example lab results
 │   └── CANCER_DIAGNOSIS_CAREG.csv     # Example cancer diagnosis
+├── example_outputs/                    # Example output files (v2.0.0)
+│   ├── README.md                       # Example outputs documentation
+│   ├── lab_result_matrix.csv          # Standard wide format (deduplicated)
+│   ├── lab_date_matrix.csv            # Standard wide format dates
+│   ├── detailed_lab_results.csv       # Detailed results (deduplicated)
+│   ├── lab_results_long_format.csv    # Long format (all data)
+│   ├── lab_result_matrix_with_suffixes.csv # Wide format with MRN suffixes
+│   ├── lab_date_matrix_with_suffixes.csv   # Wide format dates with suffixes
+│   ├── summary_statistics.csv         # Analysis summary
+│   └── lab_analysis_summary.txt       # Text summary report
 └── examples/                           # Usage examples
     ├── README.md                       # Examples documentation
     ├── basic_usage.sh                  # Basic usage examples
@@ -105,6 +115,20 @@ clinical-lab-analysis-pipeline/
 | `example_data/cohortmrn_merge.data.csv` | Example cohort data | Testing |
 | `example_data/OUTPT_LAB_RESULTS_LABS.csv` | Example lab results | Testing |
 | `example_data/CANCER_DIAGNOSIS_CAREG.csv` | Example cancer diagnosis | Testing |
+
+### Example Outputs (v2.0.0)
+
+| File | Description | Purpose |
+|------|-------------|---------|
+| `example_outputs/README.md` | Example outputs documentation | All users |
+| `example_outputs/lab_result_matrix.csv` | Standard wide format (deduplicated) | Demonstration |
+| `example_outputs/lab_date_matrix.csv` | Standard wide format dates | Demonstration |
+| `example_outputs/detailed_lab_results.csv` | Detailed results (deduplicated) | Demonstration |
+| `example_outputs/lab_results_long_format.csv` | Long format (all data) | Demonstration |
+| `example_outputs/lab_result_matrix_with_suffixes.csv` | Wide format with MRN suffixes | Demonstration |
+| `example_outputs/lab_date_matrix_with_suffixes.csv` | Wide format dates with suffixes | Demonstration |
+| `example_outputs/summary_statistics.csv` | Analysis summary | Demonstration |
+| `example_outputs/lab_analysis_summary.txt` | Text summary report | Demonstration |
 
 ### Examples
 

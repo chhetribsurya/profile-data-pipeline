@@ -1,0 +1,34 @@
+LAB ANALYSIS SUMMARY
+====================
+Generated on: 2024-01-15 14:30:25
+Input directory: ./prepared_data
+Output directory: ./lab_analysis_results
+Patients processed: 5
+Max date difference: 365 days
+
+RESULTS:
+- Total lab measurements (deduplicated): 30
+- Non-NA lab measurements (deduplicated): 30
+- Total lab measurements (all, including duplicates): 36
+- Non-NA lab measurements (all, including duplicates): 36
+- Unique test types: 6
+- Final matrix dimensions: 5 x 8
+- Matrix with suffixes dimensions: 7 x 10
+- Digit columns removed: 0
+
+OUTPUT FILES:
+- lab_result_matrix.csv/.rds: Wide format lab results (deduplicated)
+- lab_date_matrix.csv/.rds: Wide format lab dates (deduplicated)
+- detailed_lab_results.csv/.rds: Detailed results with date differences (deduplicated)
+- lab_results_long_format.csv/.rds: Long format with ALL lab results (including duplicates)
+- lab_result_matrix_with_suffixes.csv/.rds: Wide format with MRN suffixes for multiple test types
+- lab_date_matrix_with_suffixes.csv/.rds: Wide format dates with MRN suffixes
+- summary_statistics.csv: Analysis summary
+- lab_analysis_summary.txt: This summary
+
+SAMPLE DATA:
+First few rows of lab result matrix:
+   DFCI_MRN  REPORT_DT HEMOGLOBIN CREATININE GLUCOSE ALT AST ALBUMIN
+1:    12345 2023-01-15       12.5        1.2      95  25  30     4.2
+2:    67890 2023-01-16       14.1        0.9     110  28  32     4.0
+3:    11111 2023-01-17       11.8        1.0      88  22  28     4.5

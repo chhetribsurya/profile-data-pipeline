@@ -1,4 +1,4 @@
-# Clinical Lab Results Based Extraction and Analysis Pipeline
+# Clinical Lab Results Extraction and Analysis Pipeline
 
 A R-based pipeline for processing and analyzing clinical data. This pipeline processes cohort data, laboratory results, and cancer diagnosis information to create wide-format matrices for downstream analysis.
 

@@ -357,7 +357,7 @@ After running the data preparation step, your `./prepared_data/` directory will 
 | `--max_date_diff` | `365` | Maximum date difference in days |
 | `--no_remove_digits` | `false` | Don't remove digit-only columns |
 
-## 🚀 New Features
+## New Features
 
 ### Smart Caching System
 

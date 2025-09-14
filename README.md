@@ -91,7 +91,7 @@ install.packages("argparse")
 ### Method 1: Clone Repository
 
 ```bash
-git clone https://github.com/your-username/clinical-lab-analysis-pipeline.git
+git clone https://github.com/chhetribsurya/profile-data-pipeline.git
 cd clinical-lab-analysis-pipeline
 chmod +x run_analysis.sh
 ```

@@ -12,9 +12,10 @@
 #   --input_dir PATH          Input directory containing RDS files (required)
 #   --n_patients N            Number of patients to process (default: 5, use 'all' for all patients)
 #   --output_dir PATH         Output directory for results (default: ./lab_analysis_results)
-#   --max_date_diff DAYS      Maximum date difference in days (default: 365)
-#   --remove_digit_cols       Remove columns with only digit names (default: TRUE)
-#   --help, -h                Show this help message
+  #   --max_date_diff DAYS      Maximum date difference in days (default: 365)
+  #   --remove_digit_cols       Remove columns with only digit names (default: TRUE)
+  #   --force_reprocess         Force reprocessing even if cached results exist (default: FALSE)
+  #   --help, -h                Show this help message
 #
 # Examples:
 #   # Process first 5 patients (testing)
@@ -26,8 +27,11 @@
 #   # Process 100 patients with custom output directory
 #   Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients 100 --output_dir ./results
 #
-#   # Process with custom date difference threshold
-#   Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients 10 --max_date_diff 180
+  #   # Process with custom date difference threshold
+  #   Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients 10 --max_date_diff 180
+  #
+  #   # Force reprocessing even if cached results exist
+  #   Rscript 02_lab_analysis.R --input_dir ./prepared_data --n_patients all --force_reprocess
 #
 # =============================================================================
 
@@ -98,6 +102,11 @@ OUTPUT FILES:
                      action = "store_true",
                      default = TRUE,
                      help = "Remove columns with only digit names (default: %(default)s)")
+  
+  parser$add_argument("--force_reprocess", 
+                     action = "store_true",
+                     default = FALSE,
+                     help = "Force reprocessing even if cached results exist (default: %(default)s)")
   
   return(parser)
 }
@@ -229,16 +238,17 @@ perform_lab_analysis <- function(args, n_patients) {
   cat("Remove digit columns:", args$remove_digit_cols, "\n\n")
   
   # =============================================================================
-  # STAGE 1: LOAD RDS FILES
+  # STAGE 0: CHECK FOR CACHED RESULTS (BEFORE ANY PROCESSING)
   # =============================================================================
-  print_stage("1", "Loading RDS files...")
+  print_stage("0", "Checking for cached results...")
   
-  # Check if input directory exists
-  if (!dir.exists(args$input_dir)) {
-    stop("Input directory not found: ", args$input_dir)
+  # Create output directory if it doesn't exist
+  if (!dir.exists(args$output_dir)) {
+    dir.create(args$output_dir, recursive = TRUE)
+    cat("Output directory created:", args$output_dir, "\n")
   }
   
-  # Load RDS files
+  # Check if input files exist first
   cohort_file <- file.path(args$input_dir, "cohort.rds")
   lab_subset_file <- file.path(args$input_dir, "lab_subset.rds")
   cancer_subset_file <- file.path(args$input_dir, "cancer_subset.rds")
@@ -249,6 +259,54 @@ perform_lab_analysis <- function(args, n_patients) {
   if (!file.exists(lab_subset_file)) {
     stop("Lab subset RDS file not found: ", lab_subset_file)
   }
+  
+  # Prepare input files list for cache checking
+  input_files <- c(cohort_file, lab_subset_file)
+  if (file.exists(cancer_subset_file)) {
+    input_files <- c(input_files, cancer_subset_file)
+  }
+  
+  # Check for cached results (unless force reprocess is requested)
+  if (!args$force_reprocess && check_rds_cache(args$output_dir, input_files)) {
+    cat("✓ Found cached results that are newer than input files\n")
+    cat("Loading cached results to avoid reprocessing...\n")
+    
+    # Load cached results
+    cached_results <- load_cached_results(args$output_dir)
+    
+    # Display cached results summary
+    cat("\n=== CACHED RESULTS SUMMARY ===\n")
+    cat("Lab result matrix dimensions:", nrow(cached_results$lab_result_wide), "x", ncol(cached_results$lab_result_wide), "\n")
+    cat("Lab date matrix dimensions:", nrow(cached_results$lab_date_wide), "x", ncol(cached_results$lab_date_wide), "\n")
+    cat("Detailed lab results records:", nrow(cached_results$lab_result_matrix_with_dates), "\n")
+    cat("Long format records:", nrow(cached_results$lab_result_long_all), "\n")
+    cat("Lab result matrix with suffixes dimensions:", nrow(cached_results$lab_result_wide_suffix), "x", ncol(cached_results$lab_result_wide_suffix), "\n")
+    cat("Lab date matrix with suffixes dimensions:", nrow(cached_results$lab_date_wide_suffix), "x", ncol(cached_results$lab_date_wide_suffix), "\n")
+    
+    # Show processing time (minimal for cached results)
+    end_time <- Sys.time()
+    processing_time <- round(as.numeric(end_time - start_time, units = "mins"), 2)
+    
+    cat("\n", paste(rep("=", 80), collapse = ""), "\n")
+    cat("LAB ANALYSIS COMPLETED SUCCESSFULLY (FROM CACHE)\n")
+    cat(paste(rep("=", 80), collapse = ""), "\n")
+    cat("End time:", format(end_time), "\n")
+    cat("Total processing time:", processing_time, "minutes\n")
+    cat("Output directory:", args$output_dir, "\n")
+    cat("Results loaded from cache - no reprocessing needed!\n")
+    
+    # Return cached results
+    return(cached_results)
+  } else {
+    cat("No valid cached results found, proceeding with full analysis...\n")
+  }
+  
+  # =============================================================================
+  # STAGE 1: LOAD RDS FILES
+  # =============================================================================
+  print_stage("1", "Loading RDS files...")
+  
+  # Load RDS files (file paths already defined in Stage 0)
   
   cat("Loading cohort data...\n")
   cohort <- readRDS(cohort_file)
@@ -447,38 +505,6 @@ perform_lab_analysis <- function(args, n_patients) {
   if (!dir.exists(args$output_dir)) {
     dir.create(args$output_dir, recursive = TRUE)
     cat("Output directory created:", args$output_dir, "\n")
-  }
-  
-  # =============================================================================
-  # STAGE 5.5: CHECK FOR CACHED RESULTS
-  # =============================================================================
-  print_stage("5.5", "Checking for cached results...")
-  
-  input_files <- c(cohort_file, lab_subset_file)
-  if (file.exists(cancer_subset_file)) {
-    input_files <- c(input_files, cancer_subset_file)
-  }
-  
-  if (check_rds_cache(args$output_dir, input_files)) {
-    cat("✓ Found cached results that are newer than input files\n")
-    cat("Loading cached results to avoid reprocessing...\n")
-    
-    # Load cached results
-    cached_results <- load_cached_results(args$output_dir)
-    
-    # Display cached results summary
-    cat("\n=== CACHED RESULTS SUMMARY ===\n")
-    cat("Lab result matrix dimensions:", nrow(cached_results$lab_result_wide), "x", ncol(cached_results$lab_result_wide), "\n")
-    cat("Lab date matrix dimensions:", nrow(cached_results$lab_date_wide), "x", ncol(cached_results$lab_date_wide), "\n")
-    cat("Detailed lab results records:", nrow(cached_results$lab_result_matrix_with_dates), "\n")
-    cat("Long format records:", nrow(cached_results$lab_result_long_all), "\n")
-    cat("Lab result matrix with suffixes dimensions:", nrow(cached_results$lab_result_wide_suffix), "x", ncol(cached_results$lab_result_wide_suffix), "\n")
-    cat("Lab date matrix with suffixes dimensions:", nrow(cached_results$lab_date_wide_suffix), "x", ncol(cached_results$lab_date_wide_suffix), "\n")
-    
-    # Return cached results
-    return(cached_results)
-  } else {
-    cat("No valid cached results found, proceeding with full analysis...\n")
   }
   
   # =============================================================================

@@ -50,7 +50,7 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Duplicate Handling**: Intelligent handling of multiple lab results per patient
 - **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
 
-## ✨ Features
+## Features
 
 - **Clinical Data Processing**: Handles cohort, lab results, and cancer diagnosis data
 - **Wide Format Matrices**: Creates patient × test type matrices for analysis
@@ -65,7 +65,7 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
 - **Force Reprocessing**: Option to override caching when needed
 
-## 📦 Requirements
+## Requirements
 
 ### System Requirements
 
@@ -223,7 +223,7 @@ Rscript 02_lab_analysis.R \
 - `full`: Run complete pipeline
 - `help`: Show help message
 
-## 📁 Prepared Data Structure
+## Prepared Data Structure
 
 After running the data preparation step, your `./prepared_data/` directory will contain the following files:
 
@@ -322,7 +322,7 @@ After running the data preparation step, your `./prepared_data/` directory will 
 - **Purpose**: Corresponding dates for suffix-based matrix
 - **Use Case**: Date tracking for multiple test types per patient
 
-## ⚙️ Configuration Options
+## Configuration Options
 
 ### Command Line Arguments
 
@@ -405,7 +405,7 @@ The pipeline now generates comprehensive output files:
 3. **Suffix Matrices**: Wide format with MRN suffixes for multiple test types
 4. **Date Matrices**: Corresponding date information for all formats
 
-## 📚 Examples
+## Examples
 
 ### Example 1: Basic Usage
 
@@ -541,7 +541,7 @@ chmod +x run_analysis.sh
 3. **Verify data**: Check input file formats and content
 4. **Monitor resources**: Watch memory and disk usage
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
 
@@ -549,7 +549,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ```bash
 # Fork the repository
-git clone https://github.com/your-username/clinical-lab-analysis-pipeline.git
+git clone https://github.com/chhetribsurya/profile-data-pipeline.git
 cd clinical-lab-analysis-pipeline
 
 # Create a development branch

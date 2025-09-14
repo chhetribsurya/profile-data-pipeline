@@ -43,7 +43,7 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 
 - **Data Preparation**: Processes raw CSV files into optimized RDS format
 - **Lab Analysis**: Creates wide-format matrices with lab results and dates
-- **Date Matching**: Finds nearest lab results within specified time windows
+- **Intelligent Date Matching**: Finds nearest lab results within specified time windows
 - **Flexible Processing**: Supports processing subsets or all patients
 - **Comprehensive Reporting**: Generates detailed summaries and statistics
 - **Duplicate Handling**: Intelligent handling of multiple lab results per patient

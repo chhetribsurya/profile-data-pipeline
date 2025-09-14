@@ -1,4 +1,4 @@
-# Clinical Lab Analysis Pipeline
+# Clinical Lab Results Based Extraction and Analysis Pipeline
 
 A R-based pipeline for processing and analyzing clinical data. This pipeline processes cohort data, laboratory results, and cancer diagnosis information to create wide-format matrices for downstream analysis.
 
@@ -79,7 +79,7 @@ install.packages("argparse")
 
 ```bash
 git clone https://github.com/chhetribsurya/profile-data-pipeline.git
-cd clinical-lab-analysis-pipeline
+cd profile-data-pipeline
 chmod +x run_analysis.sh
 ```
 
@@ -537,7 +537,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 ```bash
 # Fork the repository
 git clone https://github.com/chhetribsurya/profile-data-pipeline.git
-cd clinical-lab-analysis-pipeline
+cd profile-data-pipeline
 
 # Create a development branch
 git checkout -b feature/your-feature-name

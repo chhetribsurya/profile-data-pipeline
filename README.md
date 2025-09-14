@@ -6,7 +6,7 @@ A R-based pipeline for processing and analyzing clinical data. This pipeline pro
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/clinical-lab-analysis-pipeline.git
+git clone https://github.com/chhetribsurya/profile-data-pipeline.git
 cd clinical-lab-analysis-pipeline
 
 # Make the wrapper script executable

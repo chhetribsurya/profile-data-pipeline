@@ -39,7 +39,7 @@ chmod +x run_analysis.sh
 
 This pipeline is designed to process clinical data from DFCI's electronic health records system. It takes raw CSV files containing cohort information, laboratory results, and cancer diagnoses, and creates structured datasets suitable for research analysis.
 
-### Key Capabilities
+### Key Capabilities and Features
 
 - **Data Preparation**: Processes raw CSV files into optimized RDS format
 - **Lab Analysis**: Creates wide-format matrices with lab results and dates
@@ -49,21 +49,9 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Smart Caching**: RDS file caching to avoid reprocessing existing results
 - **Duplicate Handling**: Intelligent handling of multiple lab results per patient
 - **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
-
-## Features
-
-- **Clinical Data Processing**: Handles cohort, lab results, and cancer diagnosis data
-- **Wide Format Matrices**: Creates patient × test type matrices for analysis
-- **Intelligent Date Matching**: Finds nearest lab results within configurable time windows
-- **Flexible Configuration**: Command-line options for all major parameters
-- **Progress Tracking**: Real-time progress updates during processing
-- **Comprehensive Reporting**: Detailed summaries and statistics
-- **Easy-to-Use Wrapper**: Single script to run complete pipeline
-- **Optimized Storage**: RDS format for fast loading and small file sizes
-- **Smart Caching System**: Automatically uses cached results to avoid reprocessing
-- **Duplicate Resolution**: Handles multiple lab results per patient with MRN suffixes
-- **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
 - **Force Reprocessing**: Option to override caching when needed
+- **Smart Caching System**: Automatically uses cached results to avoid reprocessing
+- **Progress Tracking**: Real-time progress updates during processing
 
 ## Requirements
 

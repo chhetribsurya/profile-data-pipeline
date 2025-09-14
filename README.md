@@ -46,11 +46,10 @@ This pipeline is designed to process clinical data from DFCI's electronic health
 - **Date Matching**: Finds nearest lab results within specified time windows
 - **Flexible Processing**: Supports processing subsets or all patients
 - **Comprehensive Reporting**: Generates detailed summaries and statistics
-- **Smart Caching**: RDS file caching to avoid reprocessing existing results
 - **Duplicate Handling**: Intelligent handling of multiple lab results per patient
 - **Multiple Output Formats**: Long format, wide format, and suffix-based matrices
 - **Force Reprocessing**: Option to override caching when needed
-- **Smart Caching System**: Automatically uses cached results to avoid reprocessing
+- **Smart Caching System**: RDS file caching and automatically uses cached results to avoid reprocessing
 - **Progress Tracking**: Real-time progress updates during processing
 
 ## Requirements
